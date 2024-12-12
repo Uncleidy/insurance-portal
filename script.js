@@ -1,5 +1,16 @@
-// Policies storage (simulating a database)
-let policies = [];
+// Helper to load policies from Local Storage
+function loadPolicies() {
+  const storedPolicies = localStorage.getItem('policies');
+  return storedPolicies ? JSON.parse(storedPolicies) : [];
+}
+
+// Helper to save policies to Local Storage
+function savePolicies(policies) {
+  localStorage.setItem('policies', JSON.stringify(policies));
+}
+
+// Load policies from Local Storage at the start
+let policies = loadPolicies();
 
 // Admin Portal: Handle form submission to create a new policy
 document.getElementById('create-policy-form')?.addEventListener('submit', function (e) {
@@ -11,46 +22,46 @@ document.getElementById('create-policy-form')?.addEventListener('submit', functi
   const endDate = document.getElementById('end-date').value.trim();
   const policyDoc = document.getElementById('policy-document').files[0];
 
-  // Validate file is uploaded
   if (!policyDoc || policyDoc.type !== 'application/pdf') {
     alert('Please upload a valid PDF document.');
     return;
   }
 
-  // Create a unique policy ID
-  const policyId = `${Date.now()}`;
+  const policyId = `${Date.now()}`; // Unique policy ID
 
-  // Store policy details in the "database" (here, just an array for simplicity)
   const reader = new FileReader();
   reader.onload = function () {
+    // Add new policy to array
     policies.push({
       id: policyId,
       name,
       dob,
       startDate,
       endDate,
-      document: reader.result // Base64 representation of the PDF
+      document: reader.result, // Base64 encoded PDF
     });
 
-    alert('Policy created successfully! Here is the unique link to share:');
+    // Save policies to Local Storage
+    savePolicies(policies);
+
+    alert('Policy created successfully! Share this link:');
     const policyLink = `${window.location.origin}/index.html?policyId=${policyId}`;
-    prompt('Copy and share this link with the policyholder:', policyLink);
+    prompt('Copy this link and send it to the policyholder:', policyLink);
   };
   reader.readAsDataURL(policyDoc);
 
-  // Clear the form
+  // Reset form
   document.getElementById('create-policy-form').reset();
 });
 
-// User Validation: Handle policy retrieval
+// User Validation: Handle form submission for policy lookup
 document.getElementById('policy-form')?.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const surname = document.getElementById('surname').value.trim();
+  const surname = document.getElementById('surname').value.trim().toLowerCase();
   const dob = document.getElementById('dob').value.trim();
   const startDate = document.getElementById('start-date').value.trim();
 
-  // Get the policyId from the URL
   const params = new URLSearchParams(window.location.search);
   const policyId = params.get('policyId');
 
@@ -59,7 +70,9 @@ document.getElementById('policy-form')?.addEventListener('submit', function (e) 
     return;
   }
 
-  // Find the policy in the database
+  // Load policies from Local Storage
+  policies = loadPolicies();
+
   const policy = policies.find(p => p.id === policyId);
 
   if (!policy) {
@@ -67,12 +80,12 @@ document.getElementById('policy-form')?.addEventListener('submit', function (e) 
     return;
   }
 
-  // Validate entered details
-  if (policy.name.split(' ').slice(-1)[0].toLowerCase() === surname.toLowerCase() &&
+  if (
+    policy.name.toLowerCase().includes(surname) &&
     policy.dob === dob &&
-    policy.startDate === startDate) {
-    // Show policy details
-    alert('Policy found! Displaying details now.');
+    policy.startDate === startDate
+  ) {
+    alert('Policy found! Opening details in a new tab.');
     const policyWindow = window.open('', '_blank');
     policyWindow.document.write(`
       <h1>Policy Details</h1>
@@ -83,6 +96,6 @@ document.getElementById('policy-form')?.addEventListener('submit', function (e) 
       <p><strong>Policy Document:</strong> <a href="${policy.document}" download="policy-document.pdf">Download</a></p>
     `);
   } else {
-    alert('Details do not match our records.');
+    alert('Details do not match.');
   }
 });
