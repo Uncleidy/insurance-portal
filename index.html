@@ -28,24 +28,12 @@
                 <label for="start-date">Policy Start Date</label>
                 <input type="date" id="start-date" required>
 
-                <div class="recaptcha-container">
-                    <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
-                </div>
-
                 <button type="submit">VALIDATE POLICY</button>
                 <p class="tagline">The home for specialist motor and home insurance</p>
             </form>
         </main>
     </div>
 
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"></script>
-    <script>
-        function onloadCallback() {
-            var recaptchaElement = document.getElementById('g-recaptcha');
-            grecaptcha.render(recaptchaElement, {
-                'sitekey': 'YOUR_RECAPTCHA_SITE_KEY'
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
