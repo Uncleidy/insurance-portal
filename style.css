@@ -1,66 +1,83 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-  color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    color: #333;
 }
 
 .container {
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #e0e0e0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
 header {
-  text-align: center;
-  margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header img {
+    display: block;
+    margin-bottom: 10px;
 }
 
 header h1 {
-  font-size: 28px;
-  margin-bottom: 5px;
+    font-size: 28px;
+    margin-bottom: 5px;
+    color: #007BFF;
 }
 
 header p {
-  font-size: 18px;
-  color: #777;
+    font-size: 18px;
+    color: #777;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 form h2 {
-  font-size: 22px;
-  margin-bottom: 15px;
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #007BFF;
 }
 
 form label {
-  font-weight: bold;
-  margin: 10px 0 5px;
+    font-weight: bold;
+    margin: 0;
 }
 
 form input,
 form button {
-  padding: 10px;
-  font-size: 16px;
-  margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 form button {
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
 }
 
 form button:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+
+    form {
+        gap: 10px;
+    }
 }
