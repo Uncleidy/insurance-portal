@@ -3,26 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Insurance Portal</title>
+  <title>HAVEN INSURANCE - Policy Validation</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>Insurance Portal</h1>
-    <form id="check-policy-form">
-      <label for="surname">Policy Holder Surname:</label>
-      <input type="text" id="surname" name="surname" required>
+    <header>
+      <h1>HAVEN INSURANCE</h1>
+      <p>SHORT TERM INSURANCE</p>
+    </header>
 
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" name="dob" required>
+    <main>
+      <form id="policy-form">
+        <h2>User Validation</h2>
+        <p>Please confirm the following information to access your policy documents:</p>
 
-      <label for="start-date">Policy Start Date:</label>
-      <input type="date" id="start-date" name="start_date" required>
+        <label for="surname">Policyholder Surname</label>
+        <input type="text" id="surname" placeholder="Enter surname" required>
 
-      <button type="button" onclick="checkPolicy()">Check Policy</button>
-    </form>
-    <p id="policy-result"></p>
+        <label for="dob">Policyholder Date of Birth</label>
+        <input type="date" id="dob" required>
+
+        <label for="start-date">Policy Start Date</label>
+        <input type="date" id="start-date" required>
+
+        <button type="submit">Validate Policy</button>
+      </form>
+    </main>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
