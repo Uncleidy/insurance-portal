@@ -1,51 +1,88 @@
-const POLICIES_URL = './policies.json';
+// Policies storage (simulating a database)
+let policies = [];
 
-// Fetch existing policies from the JSON file
-async function fetchPolicies() {
-  const response = await fetch(POLICIES_URL);
-  return await response.json();
-}
+// Admin Portal: Handle form submission to create a new policy
+document.getElementById('create-policy-form')?.addEventListener('submit', function (e) {
+  e.preventDefault();
 
-// Save policies to the JSON file (simulated in console)
-async function savePolicies(policies) {
-  console.log('Saving policies:', JSON.stringify(policies, null, 2));
-  // Requires backend integration to actually save policies.json
-}
-
-// Check policy details
-async function checkPolicy() {
-  const surname = document.getElementById('surname').value.trim();
-  const dob = document.getElementById('dob').value;
-  const startDate = document.getElementById('start-date').value;
-
-  const policies = await fetchPolicies();
-  const policy = policies.find(
-    (p) => p.surname === surname && p.dob === dob && p.start_date === startDate
-  );
-
-  const resultElement = document.getElementById('policy-result');
-  if (policy) {
-    resultElement.innerHTML = `Policy found! Reference Code: ${policy.reference}`;
-  } else {
-    resultElement.innerHTML = 'Policy not found. Please check your details.';
-  }
-}
-
-// Create a new policy
-async function createPolicy() {
   const name = document.getElementById('name').value.trim();
-  const dob = document.getElementById('dob').value;
-  const startDate = document.getElementById('start-date').value;
-  const endDate = document.getElementById('end-date').value;
-  const reference = document.getElementById('reference').value.trim();
+  const dob = document.getElementById('dob').value.trim();
+  const startDate = document.getElementById('start-date').value.trim();
+  const endDate = document.getElementById('end-date').value.trim();
+  const policyDoc = document.getElementById('policy-document').files[0];
 
-  const surname = name.split(' ').pop(); // Use last name as surname
+  // Validate file is uploaded
+  if (!policyDoc || policyDoc.type !== 'application/pdf') {
+    alert('Please upload a valid PDF document.');
+    return;
+  }
 
-  const newPolicy = { name, dob, start_date: startDate, end_date: endDate, reference, surname };
+  // Create a unique policy ID
+  const policyId = `${Date.now()}`;
 
-  const policies = await fetchPolicies();
-  policies.push(newPolicy);
-  await savePolicies(policies);
+  // Store policy details in the "database" (here, just an array for simplicity)
+  const reader = new FileReader();
+  reader.onload = function () {
+    policies.push({
+      id: policyId,
+      name,
+      dob,
+      startDate,
+      endDate,
+      document: reader.result // Base64 representation of the PDF
+    });
 
-  document.getElementById('policy-status').innerHTML = `Policy created! Reference Code: ${reference}`;
-}
+    alert('Policy created successfully! Here is the unique link to share:');
+    const policyLink = `${window.location.origin}/index.html?policyId=${policyId}`;
+    prompt('Copy and share this link with the policyholder:', policyLink);
+  };
+  reader.readAsDataURL(policyDoc);
+
+  // Clear the form
+  document.getElementById('create-policy-form').reset();
+});
+
+// User Validation: Handle policy retrieval
+document.getElementById('policy-form')?.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const surname = document.getElementById('surname').value.trim();
+  const dob = document.getElementById('dob').value.trim();
+  const startDate = document.getElementById('start-date').value.trim();
+
+  // Get the policyId from the URL
+  const params = new URLSearchParams(window.location.search);
+  const policyId = params.get('policyId');
+
+  if (!policyId) {
+    alert('Policy ID is missing. Please use the correct link.');
+    return;
+  }
+
+  // Find the policy in the database
+  const policy = policies.find(p => p.id === policyId);
+
+  if (!policy) {
+    alert('Policy not found.');
+    return;
+  }
+
+  // Validate entered details
+  if (policy.name.split(' ').slice(-1)[0].toLowerCase() === surname.toLowerCase() &&
+    policy.dob === dob &&
+    policy.startDate === startDate) {
+    // Show policy details
+    alert('Policy found! Displaying details now.');
+    const policyWindow = window.open('', '_blank');
+    policyWindow.document.write(`
+      <h1>Policy Details</h1>
+      <p><strong>Policyholder Name:</strong> ${policy.name}</p>
+      <p><strong>Date of Birth:</strong> ${policy.dob}</p>
+      <p><strong>Policy Start Date:</strong> ${policy.startDate}</p>
+      <p><strong>Policy End Date:</strong> ${policy.endDate}</p>
+      <p><strong>Policy Document:</strong> <a href="${policy.document}" download="policy-document.pdf">Download</a></p>
+    `);
+  } else {
+    alert('Details do not match our records.');
+  }
+});
