@@ -9,15 +9,19 @@
 <body>
     <header class="navigation">
         <img src="assets/haven-insurance-logo.png" alt="Haven Insurance Logo">
-        <a href="https://www.haven.gi/">Home</a>
-        <a href="https://www.haven.gi/aboutus">About Us</a>
-        <a href="https://www.haven.gi/what-we-do">What We Do</a>
-        <a href="https://www.haven.gi/financial-strength">Financial Strength</a>
-        <a href="https://www.haven.gi/private-car">Policy Wording</a>
-        <a href="https://www.haven.gi/claims/motor-claims">Claims</a>
-        <a href="https://www.haven.gi/regulatory">Regulatory</a>
-        <a href="https://www.haven.gi/complaints">Complaints</a>
-        <a href="https://www.haven.gi/contact">Contact</a>
+        <nav>
+            <ul>
+                <li><a href="https://www.haven.gi/">Home</a></li>
+                <li><a href="https://www.haven.gi/aboutus">About Us</a></li>
+                <li><a href="https://www.haven.gi/what-we-do">What We Do</a></li>
+                <li><a href="https://www.haven.gi/financial-strength">Financial Strength</a></li>
+                <li><a href="https://www.haven.gi/private-car">Policy Wording</a></li>
+                <li><a href="https://www.haven.gi/claims/motor-claims">Claims</a></li>
+                <li><a href="https://www.haven.gi/regulatory">Regulatory</a></li>
+                <li><a href="https://www.haven.gi/complaints">Complaints</a></li>
+                <li><a href="https://www.haven.gi/contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <div class="container">
@@ -26,14 +30,20 @@
             <p class="centered-text">For security purposes, please confirm the following information to access your policy documents:</p>
 
             <form id="policy-form">
-                <label for="surname">Policyholder Surname</label>
-                <input type="text" id="surname" placeholder="Enter surname" required>
+                <div class="form-group">
+                    <label for="surname">Policyholder Surname</label>
+                    <input type="text" id="surname" placeholder="Enter surname" required>
+                </div>
 
-                <label for="dob">Policyholder Date of Birth</label>
-                <input type="date" id="dob" required>
+                <div class="form-group">
+                    <label for="dob">Policyholder Date of Birth</label>
+                    <input type="date" id="dob" required>
+                </div>
 
-                <label for="start-date">Policy Start Date</label>
-                <input type="date" id="start-date" required>
+                <div class="form-group">
+                    <label for="start-date">Policy Start Date</label>
+                    <input type="date" id="start-date" required>
+                </div>
 
                 <div class="button-container">
                     <button type="submit" class="validate-button">VALIDATE POLICY</button>
@@ -44,8 +54,6 @@
         </main>
     </div>
 
-    <script>
-        console.log(document.querySelector('link[rel="stylesheet"]').href);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
