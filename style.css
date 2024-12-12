@@ -72,6 +72,13 @@ form button:hover {
     background-color: #0056b3;
 }
 
+.tagline {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+}
+
 @media screen and (max-width: 600px) {
     .container {
         width: 100%;
