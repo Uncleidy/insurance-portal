@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HAVEN INSURANCE - Policy Validation</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAVEN INSURANCE - Policy Validation</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>HAVEN INSURANCE</h1>
-      <p>SHORT TERM INSURANCE</p>
-    </header>
+    <div class="container">
+        <header>
+            <img src="assets/haven-insurance-logo.jpg" alt="Haven Insurance Logo">
+            <h1>HAVEN INSURANCE</h1>
+            <p>SHORT TERM INSURANCE</p>
+        </header>
 
-    <main>
-      <form id="policy-form">
-        <h2>User Validation</h2>
-        <p>Please confirm the following information to access your policy documents:</p>
+        <main>
+            <form id="policy-form">
+                <h2>User Validation</h2>
+                <p>Please confirm the following information to access your policy documents:</p>
 
-        <label for="surname">Policyholder Surname</label>
-        <input type="text" id="surname" placeholder="Enter surname" required>
+                <fieldset>
+                    <label for="surname">Policyholder Surname</label>
+                    <input type="text" id="surname" placeholder="Enter surname" required>
 
-        <label for="dob">Policyholder Date of Birth</label>
-        <input type="date" id="dob" required>
+                    <label for="dob">Policyholder Date of Birth</label>
+                    <input type="date" id="dob" required>
 
-        <label for="start-date">Policy Start Date</label>
-        <input type="date" id="start-date" required>
+                    <label for="start-date">Policy Start Date</label>
+                    <input type="date" id="start-date" required>
+                </fieldset>
 
-        <button type="submit">Validate Policy</button>
-      </form>
-    </main>
-  </div>
+                <button type="submit">Validate Policy</button>
+            </form>
+        </main>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
