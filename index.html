@@ -3,37 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAVEN INSURANCE - Admin Portal</title>
+    <title>HAVEN INSURANCE - Policy Validation</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="assets/haven-insurance-logo.jpg" alt="Haven Insurance Logo">
+            <img src="haven-insurance-logo.png" alt="Haven Insurance Logo">
             <h1>HAVEN INSURANCE</h1>
-            <p>Admin Portal</p>
+            <p>SHORT TERM INSURANCE</p>
         </header>
 
         <main>
-            <form id="create-policy-form">
-                <h2>Create a New Policy</h2>
-                <fieldset>
-                    <label for="name">Policyholder Name</label>
-                    <input type="text" id="name" placeholder="Enter full name" required>
+            <h2>USER VALIDATION</h2>
+            <p>For security purposes, please confirm the following information to access your policy documents:</p>
 
-                    <label for="dob">Date of Birth</label>
-                    <input type="date" id="dob" required>
+            <form id="policy-form">
+                <label for="surname">Policyholder Surname</label>
+                <input type="text" id="surname" placeholder="Enter surname" required>
 
-                    <label for="start-date">Policy Start Date</label>
-                    <input type="date" id="start-date" required>
+                <label for="dob">Policyholder Date of Birth</label>
+                <input type="date" id="dob" required>
 
-                    <label for="end-date">Policy End Date</label>
-                    <input type="date" id="end-date" required>
+                <label for="start-date">Policy Start Date</label>
+                <input type="date" id="start-date" required>
 
-                    <label for="policy-document">Upload Policy Document (PDF)</label>
-                    <input type="file" id="policy-document" accept="application/pdf" required>
-                </fieldset>
-                <button type="submit">Create Policy</button>
+                <button type="submit">VALIDATE POLICY</button>
+                <p class="tagline">The home for specialist motor and home insurance</p>
             </form>
         </main>
     </div>
