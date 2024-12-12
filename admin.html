@@ -3,32 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Portal</title>
+  <title>HAVEN INSURANCE - Admin Portal</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>Admin Portal</h1>
-    <form id="create-policy-form">
-      <label for="name">Policy Holder Name:</label>
-      <input type="text" id="name" name="name" required>
+    <header>
+      <h1>HAVEN INSURANCE</h1>
+      <p>Admin Portal</p>
+    </header>
 
-      <label for="dob">Date of Birth:</label>
-      <input type="date" id="dob" name="dob" required>
+    <main>
+      <form id="create-policy-form">
+        <h2>Create a New Policy</h2>
 
-      <label for="start-date">Policy Start Date:</label>
-      <input type="date" id="start-date" name="start_date" required>
+        <label for="name">Policyholder Name</label>
+        <input type="text" id="name" placeholder="Enter full name" required>
 
-      <label for="end-date">Policy End Date:</label>
-      <input type="date" id="end-date" name="end_date" required>
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" required>
 
-      <label for="reference">Policy Reference Code:</label>
-      <input type="text" id="reference" name="reference" required>
+        <label for="start-date">Policy Start Date</label>
+        <input type="date" id="start-date" required>
 
-      <button type="button" onclick="createPolicy()">Create Policy</button>
-    </form>
-    <p id="policy-status"></p>
+        <label for="end-date">Policy End Date</label>
+        <input type="date" id="end-date" required>
+
+        <label for="policy-document">Upload Policy Document (PDF)</label>
+        <input type="file" id="policy-document" accept="application/pdf" required>
+
+        <button type="submit">Create Policy</button>
+      </form>
+    </main>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
