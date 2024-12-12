@@ -2,8 +2,26 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: #f0f0f0;
     color: #333;
+}
+
+.navigation {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+.navigation a:hover {
+    background-color: #0067cc;
 }
 
 .container {
@@ -11,7 +29,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background: #e0e0e0;
+    background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -23,61 +41,43 @@ header {
 
 header img {
     display: block;
-    margin-bottom: 10px;
+    margin: 0 auto;
 }
 
-header h1 {
-    font-size: 28px;
-    margin-bottom: 5px;
-    color: #007BFF;
-}
-
-header p {
-    font-size: 18px;
-    color: #777;
+.centered-text {
+    text-align: center;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-form h2 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #007BFF;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
 }
 
 form label {
     font-weight: bold;
-    margin: 0;
+    text-align: right;
 }
 
-form input,
-form button {
+form input {
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-form button {
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.validate-button {
     background-color: #007BFF;
     color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-}
-
-form button:hover {
-    background-color: #0056b3;
-}
-
-@media screen and (max-width: 600px) {
-    .container {
-        width: 100%;
-    }
-
-    form {
-        gap: 10px;
-    }
+    font-size: 18px;
+    text-transform: uppercase;
 }
