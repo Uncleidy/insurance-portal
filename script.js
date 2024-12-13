@@ -103,14 +103,14 @@ if (window.location.pathname.includes('index.html')) {
   document.getElementById('policy-form')?.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    const surname = document.getElementById('surname').value.trim().toLowerCase();
+    const fullName = document.getElementById('full-name').value.trim().toLowerCase();
     const dob = document.getElementById('dob').value.trim();
     const startDate = document.getElementById('start-date').value.trim();
 
     // Load all policies from local storage
     const storedPolicies = JSON.parse(localStorage.getItem('policies')) || [];
     const foundPolicy = storedPolicies.find(policy =>
-      policy.name.toLowerCase() === surname &&
+      policy.name.toLowerCase() === fullName &&
       policy.dob === dob &&
       policy.startDate === startDate
     );
