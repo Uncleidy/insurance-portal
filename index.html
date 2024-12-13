@@ -9,7 +9,14 @@
 <body>
     <header class="navigation">
         <img src="assets/haven-insurance-logo.png" alt="Haven Insurance Logo">
-        <nav>
+        
+        <!-- Hamburger Menu Icon -->
+        <div class="menu-icon" id="menu-icon">
+            &#9776; <!-- Hamburger icon -->
+        </div>
+
+        <!-- Dropdown Menu -->
+        <nav id="dropdown-menu">
             <ul>
                 <li><a href="https://www.haven.gi/">Home</a></li>
                 <li><a href="https://www.haven.gi/what-we-do">What We Do</a></li>
@@ -25,10 +32,10 @@
             <p class="centered-text">For security purposes, please confirm the following information to access your policy documents:</p>
 
             <form id="policy-form">
-                <label for="full-name">Policyholder Name</label>
-                <input type="text" id="full-name" placeholder="Enter full name" required>
+                <label for="name">Policyholder Name</label>
+                <input type="text" id="name" placeholder="Enter full name" required>
 
-                <label for="dob">Policyholder Date of Birth</label>
+                <label for="dob">Date of Birth</label>
                 <input type="date" id="dob" required>
 
                 <label for="start-date">Policy Start Date</label>
