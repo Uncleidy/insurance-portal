@@ -7,16 +7,16 @@ body {
 }
 
 header {
-    background-color: #007BFF;
+    background-color: #FFD700; /* Changed to Yellow */
     color: white;
-    padding: 20px;
+    padding: 10px 20px; /* Reduced padding for smaller header */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 header img {
-    width: 150px;
+    width: 150px; /* Adjust the width as needed */
 }
 
 header nav ul {
@@ -38,7 +38,7 @@ header nav a {
 }
 
 header nav a:hover {
-    background-color: #0067cc;
+    background-color: #FFCC00; /* Lighter Yellow on hover */
 }
 
 .container {
@@ -63,36 +63,37 @@ form {
 
 .form-group {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .form-group label {
-    margin-bottom: 5px;
-    font-size: 16px;
+    flex: 0 0 150px; /* Adjust the width as needed */
+    text-align: right;
+    margin-right: 10px;
 }
 
 .form-group input {
+    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 14px;
-    width: 100%;
 }
 
-button {
-    background-color: #007BFF;
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.validate-button {
+    background-color: #FFD700; /* Changed to Yellow */
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: #0067cc;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .tagline {
@@ -100,13 +101,4 @@ button:hover {
     font-size: 14px;
     color: #777;
     margin-top: 20px;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul li {
-    margin-bottom: 20px;
 }
