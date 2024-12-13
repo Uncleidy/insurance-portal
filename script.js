@@ -1,13 +1,14 @@
-// Helper function to generate a unique policy ID
-function generatePolicyId() {
-  return 'policy-' + Math.random().toString(36).substr(2, 9);
-}
+// Function to toggle the menu on click of the hamburger
+document.getElementById('menu-toggle').addEventListener('click', () => {
+    const navLinks = document.getElementById('nav-links');
+    // Toggle the display of the navigation menu (mobile view)
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+});
 
-// Helper function to load policies from Local Storage by Policy ID
-function loadPolicyById(policyId) {
+// Helper function to load policies from Local Storage
+function loadPolicies() {
   const storedPolicies = localStorage.getItem('policies');
-  const policies = storedPolicies ? JSON.parse(storedPolicies) : [];
-  return policies.find(policy => policy.id === policyId);
+  return storedPolicies ? JSON.parse(storedPolicies) : [];
 }
 
 // Helper function to save policies to Local Storage
@@ -15,122 +16,84 @@ function savePolicies(policies) {
   localStorage.setItem('policies', JSON.stringify(policies));
 }
 
+// Load policies from Local Storage at the start
+let policies = loadPolicies();
+
 // Admin Portal: Handle form submission to create a new policy
-if (window.location.pathname.includes('admin.html')) {
-  document.getElementById('create-policy-form').addEventListener('submit', (event) => {
-    event.preventDefault();
+document.getElementById('create-policy-form')?.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-    const name = document.getElementById('name').value.trim();
-    const dob = document.getElementById('dob').value.trim();
-    const startDate = document.getElementById('start-date').value.trim();
-    const endDate = document.getElementById('end-date').value.trim();
-    const policyDocument = document.getElementById('policy-document').files[0];
+  const name = document.getElementById('name').value.trim();
+  const dob = document.getElementById('dob').value.trim();
+  const startDate = document.getElementById('start-date').value.trim();
+  const endDate = document.getElementById('end-date').value.trim();
+  const policyDocument = document.getElementById('policy-document').files[0];
 
-    if (!policyDocument) {
-      alert('Please upload a policy document.');
-      return;
-    }
-
-    if (policyDocument.type !== 'application/pdf') {
-      alert('Please upload a valid PDF document.');
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function () {
-      // Generate a unique policy ID
-      const policyId = generatePolicyId();
-
-      // Create new policy object
-      const newPolicy = {
-        id: policyId,
-        name,
-        dob,
-        startDate,
-        endDate,
-        document: reader.result // Base64 encoded PDF
-      };
-
-      // Load existing policies from local storage
-      const policies = JSON.parse(localStorage.getItem('policies')) || [];
-
-      // Add new policy to array
-      policies.push(newPolicy);
-
-      // Save updated policies to local storage
-      savePolicies(policies);
-
-      // Generate the link for the new policy
-      const policyLink = `${window.location.origin}/index.html?policyId=${policyId}`;
-
-      // Display the policy list with the link
-      const policyList = document.getElementById('policy-list').querySelector('ul');
-      const newPolicyElement = document.createElement('li');
-      newPolicyElement.innerHTML = `
-        <p><strong>Policyholder Name:</strong> ${name}</p>
-        <p><strong>Date of Birth:</strong> ${dob}</p>
-        <p><strong>Policy Start Date:</strong> ${startDate}</p>
-        <p><strong>Policy End Date:</strong> ${endDate}</p>
-        <p><strong>Policy Document:</strong> <a href="data:application/pdf;base64,${reader.result}" download="policy-document.pdf">Download</a></p>
-        <p><strong>Customer Link:</strong> <a href="${policyLink}" target="_blank">${policyLink}</a></p>
-      `;
-      policyList.appendChild(newPolicyElement);
-
-      // Reset the form
-      document.getElementById('create-policy-form').reset();
-    };
-
-    reader.onerror = function (error) {
-      alert("Error reading file: " + error.target.error.code);
-    };
-
-    reader.readAsDataURL(policyDocument);
-  });
-}
-
-// User Validation: Handle form submission for policy lookup
-if (window.location.pathname.includes('index.html')) {
-  // Get the policyId from the URL query string
-  const urlParams = new URLSearchParams(window.location.search);
-  const policyId = urlParams.get('policyId');
-
-  if (policyId) {
-    // Show the validation form
-    document.getElementById('validation-form').style.display = 'block'; // Assuming you have this element
+  if (!policyDocument || policyDocument.type !== 'application/pdf') {
+    alert('Please upload a valid PDF document.');
+    return;
   }
 
-  // Handle user validation form submission
-  document.getElementById('policy-form')?.addEventListener('submit', function (e) {
-    e.preventDefault();
+  const reader = new FileReader();
+  reader.onload = function () {
+    // Add new policy to array
+    policies.push({
+      name,
+      dob,
+      startDate,
+      endDate,
+      document: reader.result // Base64 encoded PDF
+    });
 
-    const fullName = document.getElementById('full-name').value.trim().toLowerCase();
-    const dob = document.getElementById('dob').value.trim();
-    const startDate = document.getElementById('start-date').value.trim();
+    // Save policies to Local Storage
+    savePolicies(policies);
 
-    // Load all policies from local storage
-    const storedPolicies = JSON.parse(localStorage.getItem('policies')) || [];
-    const foundPolicy = storedPolicies.find(policy =>
-      policy.name.toLowerCase() === fullName &&
-      policy.dob === dob &&
-      policy.startDate === startDate
-    );
+    // Display the new policy in the HTML
+    const policyList = document.getElementById('policy-list');
+    const newPolicyElement = document.createElement('li');
+    newPolicyElement.innerHTML = `
+      <p><strong>Policyholder Name:</strong> ${name}</p>
+      <p><strong>Date of Birth:</strong> ${dob}</p>
+      <p><strong>Policy Start Date:</strong> ${startDate}</p>
+      <p><strong>Policy End Date:</strong> ${endDate}</p>
+      <p><strong>Policy Document:</strong> <a href="data:application/pdf;base64,${reader.result}" download="policy-document.pdf">Download</a></p>
+    `;
+    policyList.appendChild(newPolicyElement);
 
-    if (foundPolicy) {
-      // Display policy details once validated
-      const policyDetails = `
-        <h3>Policy Details:</h3>
-        <p><strong>Policyholder Name:</strong> ${foundPolicy.name}</p>
-        <p><strong>Date of Birth:</strong> ${foundPolicy.dob}</p>
-        <p><strong>Start Date:</strong> ${foundPolicy.startDate}</p>
-        <p><strong>End Date:</strong> ${foundPolicy.endDate}</p>
-        <p><strong>Document:</strong> <a href="data:application/pdf;base64,${foundPolicy.document}" download="policy-document.pdf">Download</a></p>
-      `;
-      document.getElementById('policy-details').innerHTML = policyDetails;
+    // Reset the form
+    document.getElementById('create-policy-form').reset();
+  };
+  reader.readAsDataURL(policyDocument);
+});
 
-      // Optionally hide the validation form
-      document.getElementById('validation-form').style.display = 'none';
-    } else {
-      alert('Policy not found or validation failed.');
-    }
-  });
-}
+// User Validation: Handle form submission for policy lookup
+document.getElementById('policy-form')?.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim().toLowerCase();
+  const dob = document.getElementById('dob').value.trim();
+  const startDate = document.getElementById('start-date').value.trim();
+
+  const foundPolicy = policies.find(policy => 
+    policy.name.toLowerCase() === name &&
+    policy.dob === dob &&
+    policy.startDate === startDate
+  );
+
+  if (foundPolicy) {
+    // Display policy details in a new window or within the current page
+    const policyDetails = `
+      <h3>Policy Details</h3>
+      <p><strong>Policyholder Name:</strong> ${foundPolicy.name}</p>
+      <p><strong>Date of Birth:</strong> ${foundPolicy.dob}</p>
+      <p><strong>Policy Start Date:</strong> ${foundPolicy.startDate}</p>
+      <p><strong>Policy End Date:</strong> ${foundPolicy.endDate}</p>
+      <p><strong>Policy Document:</strong> <a href="data:application/pdf;base64,${foundPolicy.document}" download="policy-document.pdf">Download</a></p>
+    `;
+
+    // Insert policy details into the page
+    document.querySelector('main').innerHTML += policyDetails;
+  } else {
+    alert('Policy not found.');
+  }
+});
