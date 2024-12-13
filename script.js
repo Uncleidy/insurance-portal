@@ -22,7 +22,12 @@ document.getElementById('create-policy-form').addEventListener('submit', (event)
   const endDate = document.getElementById('end-date').value.trim();
   const policyDocument = document.getElementById('policy-document').files[0];
 
-  if (!policyDocument || policyDocument.type !== 'application/pdf') {
+  if (!policyDocument) {
+    alert('Please upload a policy document.');
+    return;
+  }
+
+  if (policyDocument.type !== 'application/pdf') {
     alert('Please upload a valid PDF document.');
     return;
   }
@@ -42,7 +47,7 @@ document.getElementById('create-policy-form').addEventListener('submit', (event)
     savePolicies(policies);
 
     // Display the new policy in the HTML
-    const policyList = document.getElementById('policy-list');
+    const policyList = document.getElementById('policy-list').querySelector('ul');
     const newPolicyElement = document.createElement('li');
     newPolicyElement.innerHTML = `
       <p><strong>Policyholder Name:</strong> ${name}</p>
@@ -56,6 +61,11 @@ document.getElementById('create-policy-form').addEventListener('submit', (event)
     // Reset the form
     document.getElementById('create-policy-form').reset();
   };
+
+  reader.onerror = function (error) {
+    alert("Error reading file: " + error.target.error.code);
+  };
+
   reader.readAsDataURL(policyDocument);
 });
 
@@ -74,9 +84,33 @@ document.getElementById('policy-form')?.addEventListener('submit', function (e) 
   );
 
   if (foundPolicy) {
-    // Display policy details in a new window or within the current page
-    // ...
+    const policyDetails = `
+      <p><strong>Policyholder Name:</strong> ${foundPolicy.name}</p>
+      <p><strong>Date of Birth:</strong> ${foundPolicy.dob}</p>
+      <p><strong>Start Date:</strong> ${foundPolicy.startDate}</p>
+      <p><strong>End Date:</strong> ${foundPolicy.endDate}</p>
+      <p><strong>Document:</strong> <a href="data:application/pdf;base64,${foundPolicy.document}" download="policy-document.pdf">Download</a></p>
+    `;
+    document.getElementById('policy-list').innerHTML = policyDetails;
   } else {
-    alert('Policy not found.');
+    alert('Policy not found. Please check your information and try again.');
   }
+});
+
+// Load and display all policies on page load
+window.addEventListener('load', function() {
+  const policies = loadPolicies();
+  const policyList = document.getElementById('policy-list').querySelector('ul');
+  
+  policies.forEach(policy => {
+    const policyItem = document.createElement('li');
+    policyItem.innerHTML = `
+      <p><strong>Policyholder Name:</strong> ${policy.name}</p>
+      <p><strong>Date of Birth:</strong> ${policy.dob}</p>
+      <p><strong>Policy Start Date:</strong> ${policy.startDate}</p>
+      <p><strong>Policy End Date:</strong> ${policy.endDate}</p>
+      <p><strong>Policy Document:</strong> <a href="data:application/pdf;base64,${policy.document}" download="policy-document.pdf">Download</a></p>
+    `;
+    policyList.appendChild(policyItem);
+  });
 });
