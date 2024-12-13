@@ -7,13 +7,13 @@ body {
 }
 
 header {
-    background-color: #ffcc00; /* Yellow color for the area above the navigation */
+    background-color: #4a4a4a; /* Graphite grey color for the background */
     color: white;
-    padding: 10px 20px; /* Adjust padding */
+    padding: 10px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column; /* Center logo and navigation in a column */
+    flex-direction: column;
 }
 
 header .logo-container {
@@ -24,8 +24,23 @@ header img {
     width: 150px; /* Adjust the logo width */
 }
 
+header .menu-toggle {
+    display: none; /* Hidden by default, for mobile screens */
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+header .menu-toggle span {
+    background-color: white;
+    width: 30px;
+    height: 3px;
+    margin: 5px 0;
+}
+
+/* Navigation styling */
 header nav {
-    background-color: #000; /* Black background for the navigation */
+    background-color: #4a4a4a; /* Keep the navigation bar the same color */
     width: 100%;
     display: flex;
     justify-content: center;
@@ -41,7 +56,7 @@ header nav ul {
 }
 
 header nav li {
-    margin: 0 15px; /* Increased space between items */
+    margin: 0 15px;
 }
 
 header nav a {
@@ -115,9 +130,23 @@ button {
         width: 120px;
     }
 
+    /* Show hamburger menu on mobile */
+    header .menu-toggle {
+        display: flex;
+    }
+
+    /* Hide the navigation by default on mobile */
+    header nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
     header nav ul {
-        flex-direction: column; /* Stack navigation links for mobile */
+        flex-direction: column;
         text-align: center;
+        width: 100%;
     }
 
     header nav li {
@@ -135,14 +164,14 @@ button {
 
 @media (max-width: 480px) {
     header img {
-        width: 100px; /* Smaller logo for smaller screens */
+        width: 100px;
     }
 
     header nav a {
-        font-size: 12px; /* Smaller font for mobile */
+        font-size: 12px;
     }
 
     .container {
-        width: 95%; /* Slightly larger container for mobile screens */
+        width: 95%;
     }
 }
