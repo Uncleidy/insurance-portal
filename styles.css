@@ -13,6 +13,7 @@ header {
     display: flex;
     justify-content: center; /* Center the logo and the nav */
     align-items: center;
+    position: relative;
 }
 
 header img {
@@ -24,98 +25,100 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Ensure navigation items are centered */
+    justify-content: center;
     width: 100%;
 }
 
 header nav li {
-    margin: 0 8px; /* Space out the items with consistent margin */
+    margin: 0 8px;
 }
 
 header nav a {
     color: white;
     text-decoration: none;
-    padding: 12px 20px; /* Adjust padding for readability */
+    padding: 12px 20px;
     border-radius: 5px;
-    font-size: 18px; /* Font size adjusted for better visibility */
+    font-size: 18px;
     text-align: center;
 }
 
 header nav a:hover {
-    background-color: #e6b800; /* Darker yellow on hover */
+    background-color: #e6b800;
 }
 
-/* Container for the content */
-.container {
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-.centered-text {
+/* Dropdown Menu (hidden by default) */
+#dropdown-menu {
+    display: none; /* Hide menu by default */
+    position: absolute;
+    top: 60px; /* Position it below the header */
+    left: 0;
+    background-color: #ffcc00;
+    width: 100%;
     text-align: center;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+#dropdown-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-/* Adjust font sizes and navigation layout for mobile screens */
+#dropdown-menu li {
+    padding: 10px 0;
+}
+
+#dropdown-menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+}
+
+#dropdown-menu a:hover {
+    background-color: #e6b800;
+}
+
+/* Hamburger Menu Icon */
+.menu-icon {
+    display: none; /* Hide by default */
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    margin-left: 20px;
+}
+
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     header {
-        flex-direction: column; /* Stack logo and navigation vertically for tablets */
-        padding: 15px;
+        flex-direction: column;
+        padding: 10px 20px;
     }
 
     header img {
-        width: 120px; /* Adjust logo size for mobile */
+        width: 120px;
     }
 
     header nav ul {
-        display: flex;
-        justify-content: space-between; /* Distribute items evenly */
-        width: 100%;
+        display: none; /* Hide the original nav list on small screens */
     }
 
-    header nav li {
-        margin: 0 5px; /* Smaller margin between items */
+    /* Show hamburger menu on mobile */
+    .menu-icon {
+        display: block;
     }
 
-    header nav a {
-        font-size: 16px; /* Font size adjusted for better readability */
-        padding: 10px 15px; /* Adjust padding to maintain balance */
+    /* Style for the mobile dropdown menu */
+    #dropdown-menu {
+        display: none;
     }
 }
 
-/* For smaller devices (like phones), keep it in a smaller layout */
 @media (max-width: 480px) {
-    header {
-        flex-direction: column; /* Stack the logo on top and nav underneath */
-        padding: 10px;
-    }
-
     header img {
-        width: 100px; /* Smaller logo for phone screens */
-    }
-
-    header nav ul {
-        display: flex;
-        justify-content: space-around; /* Ensure items are spaced evenly */
-        width: 100%;
-    }
-
-    header nav li {
-        margin: 0 4px; /* Even smaller margin for small screens */
+        width: 100px;
     }
 
     header nav a {
-        font-size: 14px; /* Smaller font size for better fit */
-        padding: 8px 12px; /* Adjust padding to fit better */
+        font-size: 14px;
     }
 }
