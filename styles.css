@@ -13,6 +13,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Allow navigation items to wrap on small screens */
 }
 
 header img {
@@ -25,10 +26,13 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-wrap: wrap; /* Allow navigation items to wrap on small screens */
+    gap: 10px; /* Space between items */
 }
 
 header nav li {
-    margin-right: 20px;
+    flex: 1 1 auto; /* Allow items to shrink and grow */
+    text-align: center;
 }
 
 header nav a {
@@ -36,6 +40,7 @@ header nav a {
     text-decoration: none;
     padding: 10px;
     border-radius: 5px;
+    display: block;
 }
 
 header nav a:hover {
@@ -102,4 +107,27 @@ form {
     font-size: 14px;
     color: #777;
     margin-top: 20px;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    header nav ul {
+        justify-content: space-evenly; /* Evenly space the nav items */
+        flex-direction: column; /* Stack the items vertically */
+        width: 100%; /* Full width for the navigation */
+    }
+
+    header nav li {
+        flex: none; /* Prevent items from shrinking */
+        width: 100%; /* Make items take full width */
+    }
+
+    header nav a {
+        padding: 12px 0; /* Adjust padding for better touch experience */
+        text-align: center;
+    }
+
+    header {
+        padding: 5px 10px; /* Adjust header padding for smaller screen */
+    }
 }
