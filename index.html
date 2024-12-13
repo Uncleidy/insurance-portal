@@ -3,21 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAVEN INSURANCE - Policy Validation</title>
+    <title>HAVEN INSURANCE</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="assets/haven_logo.png" alt="Haven Insurance Logo">
-        </div>
-        <!-- Hamburger Icon -->
-        <div class="menu-toggle" id="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        <nav id="nav-links">
+    <header class="navigation">
+        <img src="assets/haven-insurance-logo.png" alt="Haven Insurance Logo">
+        <nav>
             <ul>
                 <li><a href="https://www.haven.gi/">Home</a></li>
                 <li><a href="https://www.haven.gi/what-we-do">What We Do</a></li>
@@ -28,11 +20,14 @@
     </header>
 
     <div class="container">
-        <main>
-            <h2 class="centered-text">USER VALIDATION</h2>
-            <p class="centered-text">For security purposes, please confirm the following information to access your policy documents:</p>
+        <header>
+            <h1>HAVEN INSURANCE</h1>
+            <p>Customer Portal</p>
+        </header>
 
-            <form id="policy-form">
+        <main>
+            <h2>Login to Access Your Policy</h2>
+            <form id="login-form">
                 <label for="name">Policyholder Name</label>
                 <input type="text" id="name" placeholder="Enter full name" required>
 
@@ -42,10 +37,13 @@
                 <label for="start-date">Policy Start Date</label>
                 <input type="date" id="start-date" required>
 
-                <button type="submit">VALIDATE POLICY</button>
+                <button type="submit">Login</button>
             </form>
 
-            <p class="tagline centered-text">The home for specialist motor and home insurance</p>
+            <div id="policy-details" style="display:none;">
+                <h3>Policy Details</h3>
+                <div id="policy-info"></div>
+            </div>
         </main>
     </div>
 
