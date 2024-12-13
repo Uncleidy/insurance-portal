@@ -8,20 +8,11 @@
 </head>
 <body>
     <header class="navigation">
-        <a href="https://www.haven.gi/">Home</a>
-        <a href="https://www.haven.gi/aboutus">About Us</a>
-        <a href="https://www.haven.gi/what-we-do">What We Do</a>
-        <a href="https://www.haven.gi/financial-strength">Financial Strength</a>
-        <a href="https://www.haven.gi/private-car">Policy Wording</a>
-        <a href="https://www.haven.gi/claims/motor-claims">Claims</a>
-        <a href="https://www.haven.gi/regulatory">Regulatory</a>
-        <a href="https://www.haven.gi/complaints">Complaints</a>
-        <a href="https://www.haven.gi/contact">Contact</a>
-    </header>
+        </header>
 
     <div class="container">
         <header>
-            <img src="haven-insurance-logo.png" alt="Haven Insurance Logo">
+            <img src="assets/haven-insurance-logo.png" alt="Haven Insurance Logo">
         </header>
 
         <main>
@@ -34,10 +25,12 @@
                 <input type="date" id="dob" required>
 
                 <label for="start-date">Policy Start Date</label>
-                <input type="datetime-local" id="start-date" required>
+                <input type="date" id="start-date" required>
+                <input type="time" id="start-time" required>
 
                 <label for="end-date">Policy End Date</label>
-                <input type="datetime-local" id="end-date" required>
+                <input type="date" id="end-date" required>
+                <input type="time" id="end-time" required>
 
                 <label for="policy-document">Upload Policy Document (PDF)</label>
                 <input type="file" id="policy-document" accept="application/pdf" required>
