@@ -9,6 +9,14 @@
 <body>
     <header class="navigation">
         <img src="assets/haven-insurance-logo.png" alt="Haven Insurance Logo">
+        <nav>
+            <ul>
+                <li><a href="https://www.haven.gi/">Home</a></li>
+                <li><a href="https://www.haven.gi/what-we-do">What We Do</a></li>
+                <li><a href="https://www.haven.gi/claims/motor-claims">Claims</a></li>
+                <li><a href="https://www.haven.gi/contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <div class="container">
@@ -20,33 +28,27 @@
         <main>
             <h2>Create a New Policy</h2>
             <form id="create-policy-form">
-                <div class="form-group">
-                    <label for="name">Policyholder Name</label>
-                    <input type="text" id="name" placeholder="Enter full name" required>
-                </div>
-                <div class="form-group">
-                    <label for="dob">Date of Birth</label>
-                    <input type="date" id="dob" required>
-                </div>
-                <div class="form-group">
-                    <label for="start-date">Policy Start Date</label>
-                    <input type="date" id="start-date" required>
-                </div>
-                <div class="form-group">
-                    <label for="end-date">Policy End Date</label>
-                    <input type="date" id="end-date" required>
-                </div>
-                <div class="form-group">
-                    <label for="policy-document">Upload Policy Document (PDF)</label>
-                    <input type="file" id="policy-document" accept="application/pdf" required>
-                </div>
+                <label for="name">Policyholder Name</label>
+                <input type="text" id="name" placeholder="Enter full name" required>
+
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" required>
+
+                <label for="start-date">Policy Start Date</label>
+                <input type="date" id="start-date" required>
+
+                <label for="end-date">Policy End Date</label>
+                <input type="date" id="end-date" required>
+
+                <label for="policy-document">Upload Policy Document (PDF)</label>
+                <input type="file" id="policy-document" accept="application/pdf" required>
+
                 <button type="submit">Create Policy</button>
             </form>
 
             <div id="policy-list">
                 <h2>Created Policies</h2>
-                <ul>
-                </ul>
+                <ul></ul>
             </div>
         </main>
     </div>
