@@ -24,13 +24,12 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Allow the items to wrap on smaller screens */
-    justify-content: center; /* Center the navigation items */
+    justify-content: space-between; /* Ensure even spacing between items */
     width: 100%; /* Ensure nav items take full width of the container */
 }
 
 header nav li {
-    margin: 0 10px; /* Space out the items with consistent margin */
+    margin: 0 8px; /* Space out the items with consistent margin */
 }
 
 header nav a {
@@ -80,8 +79,7 @@ form {
 
     header nav ul {
         display: flex;
-        flex-direction: row; /* Ensure the nav items stay in a row */
-        justify-content: center; /* Center items */
+        justify-content: space-evenly; /* Distribute items evenly */
         width: 100%;
     }
 
@@ -97,8 +95,14 @@ form {
 
 /* For smaller devices (like phones), keep it in a smaller layout */
 @media (max-width: 480px) {
+    header nav ul {
+        display: flex;
+        justify-content: space-evenly; /* Items evenly spaced */
+        width: 100%;
+    }
+
     header nav a {
-        font-size: 20px; /* Slightly smaller font size for better readability */
-        padding: 12px 18px; /* Adjust padding to balance the space */
+        font-size: 18px; /* Adjusted font size to fit better */
+        padding: 10px 12px; /* Adjusted padding for balance */
     }
 }
