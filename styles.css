@@ -7,27 +7,28 @@ body {
 }
 
 header {
-    background-color: #ffcc00; /* Yellow for the area above the navigation */
+    background-color: #ffcc00; /* Yellow color for the area above the navigation */
     color: white;
-    padding: 15px 20px; /* Adjusted padding for more space */
+    padding: 10px 20px; /* Adjust padding */
     display: flex;
-    justify-content: center; /* Center the logo and the nav */
+    justify-content: center;
     align-items: center;
-    position: relative;
+    flex-direction: column; /* Center logo and navigation in a column */
 }
 
 header .logo-container {
-    width: 100%; /* To take up full width for better layout control */
     text-align: center;
 }
 
 header img {
-    width: 150px; /* Adjust the width of the logo */
+    width: 150px; /* Adjust the logo width */
 }
 
 header nav {
     background-color: #000; /* Black background for the navigation */
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 header nav ul {
@@ -40,7 +41,7 @@ header nav ul {
 }
 
 header nav li {
-    margin: 0 8px;
+    margin: 0 15px; /* Increased space between items */
 }
 
 header nav a {
@@ -48,7 +49,7 @@ header nav a {
     text-decoration: none;
     padding: 12px 20px;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -76,30 +77,17 @@ form {
     gap: 20px;
 }
 
-.form-group {
-    display: flex;
-    align-items: center;
+form label {
+    font-size: 16px;
 }
 
-.form-group label {
-    flex: 0 0 150px; /* Adjust the width as needed */
-    text-align: right;
-    margin-right: 10px;
-}
-
-.form-group input {
-    flex: 1;
+form input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.button-container {
-    display: flex;
-    justify-content: center;
-}
-
-.validate-button {
+button {
     background-color: #ffcc00;
     color: white;
     padding: 15px 30px;
@@ -108,7 +96,6 @@ form {
     cursor: pointer;
     font-size: 18px;
     text-transform: uppercase;
-    text-align: center;
 }
 
 .tagline {
@@ -121,8 +108,7 @@ form {
 /* Mobile responsiveness */
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
-        padding: 10px 20px;
+        padding: 10px 15px;
     }
 
     header img {
@@ -130,26 +116,33 @@ form {
     }
 
     header nav ul {
-        display: none; /* Hide the original nav list on small screens */
+        flex-direction: column; /* Stack navigation links for mobile */
+        text-align: center;
     }
 
-    /* Show hamburger menu on mobile */
-    .menu-icon {
-        display: block;
+    header nav li {
+        margin: 10px 0; /* Vertical margin between links */
     }
 
-    /* Style for the mobile dropdown menu */
-    #dropdown-menu {
-        display: none;
+    header nav a {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 10px;
     }
 }
 
 @media (max-width: 480px) {
     header img {
-        width: 100px;
+        width: 100px; /* Smaller logo for smaller screens */
     }
 
     header nav a {
-        font-size: 14px;
+        font-size: 12px; /* Smaller font for mobile */
+    }
+
+    .container {
+        width: 95%; /* Slightly larger container for mobile screens */
     }
 }
