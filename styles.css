@@ -25,12 +25,12 @@ header nav ul {
     padding: 0;
     display: flex;
     flex-wrap: wrap; /* Allow the items to wrap on smaller screens */
-    justify-content: space-evenly; /* Evenly distribute the items */
+    justify-content: center; /* Center the navigation items */
     width: 100%; /* Ensure nav items take full width of the container */
 }
 
 header nav li {
-    margin: 0 15px; /* Space out the items with consistent margin */
+    margin: 0 10px; /* Space out the items with consistent margin */
 }
 
 header nav a {
@@ -38,7 +38,7 @@ header nav a {
     text-decoration: none;
     padding: 12px 20px; /* Adjust padding for readability */
     border-radius: 5px;
-    font-size: 16px; /* Slightly larger font size for better visibility */
+    font-size: 18px; /* Font size adjusted for better visibility */
     text-align: center;
 }
 
@@ -67,10 +67,10 @@ form {
     gap: 20px;
 }
 
-/* Adjust font sizes for mobile screens */
+/* Adjust font sizes and navigation layout for mobile screens */
 @media (max-width: 768px) {
     header {
-        flex-direction: column; /* Stack logo and navigation vertically */
+        flex-direction: column; /* Stack logo and navigation vertically for tablets */
         padding: 15px;
     }
 
@@ -81,24 +81,24 @@ form {
     header nav ul {
         display: flex;
         flex-direction: row; /* Ensure the nav items stay in a row */
-        justify-content: space-evenly; /* Evenly space the items across the screen */
+        justify-content: center; /* Center items */
         width: 100%;
     }
 
     header nav li {
-        margin: 0 10px; /* Space out the items with smaller margins */
+        margin: 0 8px; /* Smaller margin between items */
     }
 
     header nav a {
-        font-size: 18px; /* Decreased font size for a bit more balance */
-        padding: 10px 15px; /* Adjust padding for balance */
+        font-size: 18px; /* Font size adjusted for better readability */
+        padding: 10px 15px; /* Adjust padding to maintain balance */
     }
 }
 
 /* For smaller devices (like phones), keep it in a smaller layout */
 @media (max-width: 480px) {
     header nav a {
-        font-size: 20px; /* Slightly decreased font size for better readability */
-        padding: 12px 20px; /* Adjust padding to maintain balance */
+        font-size: 20px; /* Slightly smaller font size for better readability */
+        padding: 12px 18px; /* Adjust padding to balance the space */
     }
 }
