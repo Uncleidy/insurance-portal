@@ -11,7 +11,7 @@ header {
     color: white;
     padding: 15px 20px; /* Adjusted padding for more space */
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center the logo and the nav */
     align-items: center;
 }
 
@@ -24,8 +24,8 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: space-between; /* Ensure even spacing between items */
-    width: 100%; /* Ensure nav items take full width of the container */
+    justify-content: center; /* Ensure navigation items are centered */
+    width: 100%;
 }
 
 header nav li {
@@ -79,30 +79,43 @@ form {
 
     header nav ul {
         display: flex;
-        justify-content: space-evenly; /* Distribute items evenly */
+        justify-content: space-between; /* Distribute items evenly */
         width: 100%;
     }
 
     header nav li {
-        margin: 0 8px; /* Smaller margin between items */
+        margin: 0 5px; /* Smaller margin between items */
     }
 
     header nav a {
-        font-size: 18px; /* Font size adjusted for better readability */
+        font-size: 16px; /* Font size adjusted for better readability */
         padding: 10px 15px; /* Adjust padding to maintain balance */
     }
 }
 
 /* For smaller devices (like phones), keep it in a smaller layout */
 @media (max-width: 480px) {
+    header {
+        flex-direction: column; /* Stack the logo on top and nav underneath */
+        padding: 10px;
+    }
+
+    header img {
+        width: 100px; /* Smaller logo for phone screens */
+    }
+
     header nav ul {
         display: flex;
-        justify-content: space-evenly; /* Items evenly spaced */
+        justify-content: space-around; /* Ensure items are spaced evenly */
         width: 100%;
     }
 
+    header nav li {
+        margin: 0 4px; /* Even smaller margin for small screens */
+    }
+
     header nav a {
-        font-size: 18px; /* Adjusted font size to fit better */
-        padding: 10px 12px; /* Adjusted padding for balance */
+        font-size: 14px; /* Smaller font size for better fit */
+        padding: 8px 12px; /* Adjust padding to fit better */
     }
 }
