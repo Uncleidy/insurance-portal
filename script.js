@@ -95,21 +95,8 @@ if (window.location.pathname.includes('index.html')) {
   const policyId = urlParams.get('policyId');
 
   if (policyId) {
-    const foundPolicy = loadPolicyById(policyId);
-
-    if (foundPolicy) {
-      const policyDetails = `
-        <h3>Policy Details:</h3>
-        <p><strong>Policyholder Name:</strong> ${foundPolicy.name}</p>
-        <p><strong>Date of Birth:</strong> ${foundPolicy.dob}</p>
-        <p><strong>Start Date:</strong> ${foundPolicy.startDate}</p>
-        <p><strong>End Date:</strong> ${foundPolicy.endDate}</p>
-        <p><strong>Document:</strong> <a href="data:application/pdf;base64,${foundPolicy.document}" download="policy-document.pdf">Download</a></p>
-      `;
-      document.getElementById('policy-details').innerHTML = policyDetails;
-    } else {
-      alert('Policy not found.');
-    }
+    // Show the validation form
+    document.getElementById('validation-form').style.display = 'block'; // Assuming you have this element
   }
 
   // Handle user validation form submission
@@ -120,24 +107,30 @@ if (window.location.pathname.includes('index.html')) {
     const dob = document.getElementById('dob').value.trim();
     const startDate = document.getElementById('start-date').value.trim();
 
-    const foundPolicy = loadPolicyById(policyId);
+    // Load all policies from local storage
+    const storedPolicies = JSON.parse(localStorage.getItem('policies')) || [];
+    const foundPolicy = storedPolicies.find(policy =>
+      policy.name.toLowerCase() === surname &&
+      policy.dob === dob &&
+      policy.startDate === startDate
+    );
 
     if (foundPolicy) {
-      if (foundPolicy.name.toLowerCase() === surname && foundPolicy.dob === dob && foundPolicy.startDate === startDate) {
-        const policyDetails = `
-          <h3>Policy Details:</h3>
-          <p><strong>Policyholder Name:</strong> ${foundPolicy.name}</p>
-          <p><strong>Date of Birth:</strong> ${foundPolicy.dob}</p>
-          <p><strong>Start Date:</strong> ${foundPolicy.startDate}</p>
-          <p><strong>End Date:</strong> ${foundPolicy.endDate}</p>
-          <p><strong>Document:</strong> <a href="data:application/pdf;base64,${foundPolicy.document}" download="policy-document.pdf">Download</a></p>
-        `;
-        document.getElementById('policy-details').innerHTML = policyDetails;
-      } else {
-        alert('Policy details do not match.');
-      }
+      // Display policy details once validated
+      const policyDetails = `
+        <h3>Policy Details:</h3>
+        <p><strong>Policyholder Name:</strong> ${foundPolicy.name}</p>
+        <p><strong>Date of Birth:</strong> ${foundPolicy.dob}</p>
+        <p><strong>Start Date:</strong> ${foundPolicy.startDate}</p>
+        <p><strong>End Date:</strong> ${foundPolicy.endDate}</p>
+        <p><strong>Document:</strong> <a href="data:application/pdf;base64,${foundPolicy.document}" download="policy-document.pdf">Download</a></p>
+      `;
+      document.getElementById('policy-details').innerHTML = policyDetails;
+
+      // Optionally hide the validation form
+      document.getElementById('validation-form').style.display = 'none';
     } else {
-      alert('Policy not found.');
+      alert('Policy not found or validation failed.');
     }
   });
 }
