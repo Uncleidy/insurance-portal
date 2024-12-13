@@ -16,6 +16,12 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
 
+    // Validate inputs
+    if (username === '' || password === '') {
+        alert('Username and password cannot be empty.');
+        return;
+    }
+
     // Validate the credentials
     if (username === adminCredentials.username && password === adminCredentials.password) {
         // Successful login
@@ -25,4 +31,10 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         // Failed login
         alert('Invalid username or password. Please try again.');
     }
+});
+
+// Optional: Redirect to a password recovery page (not implemented in this example)
+document.getElementById('forgot-password-link').addEventListener('click', function() {
+    alert('This feature is not implemented yet.');
+    // Redirect to a password recovery page or show password reset form if needed
 });
