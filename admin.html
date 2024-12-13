@@ -8,11 +8,13 @@
 </head>
 <body>
     <header class="navigation">
-        </header>
+        <img src="assets/haven-insurance-logo.png" alt="Haven Insurance Logo">
+    </header>
 
     <div class="container">
         <header>
-            <img src="assets/haven-insurance-logo.png" alt="Haven Insurance Logo">
+            <h1>HAVEN INSURANCE</h1>
+            <p>Admin Portal</p>
         </header>
 
         <main>
@@ -25,10 +27,10 @@
                 <input type="date" id="dob" required>
 
                 <label for="start-date">Policy Start Date</label>
-                <input type="date" id="start-date" name="start_date" required>
+                <input type="date" id="start-date" required>
 
                 <label for="end-date">Policy End Date</label>
-                <input type="date" id="end-date" name="end_date" required>
+                <input type="date" id="end-date" required>
 
                 <label for="policy-document">Upload Policy Document (PDF)</label>
                 <input type="file" id="policy-document" accept="application/pdf" required>
@@ -36,8 +38,11 @@
                 <button type="submit">Create Policy</button>
             </form>
 
-            <div id="result"></div>
-
+            <div id="policy-list">
+                <h2>Created Policies</h2>
+                <ul>
+                </ul>
+            </div>
         </main>
     </div>
 
