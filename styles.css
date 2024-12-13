@@ -7,16 +7,17 @@ body {
 }
 
 header {
-    background-color: #FFDD55; /* Softer yellow */
+    background-color: #FFB900; /* Brighter yellow */
     color: white;
-    padding: 5px 20px; /* Reduced the height of the yellow header */
+    padding: 3px 20px; /* Reduced padding for even smaller header */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 header img {
-    width: 150px; /* Adjust the width as needed */
+    width: 120px; /* Adjusted to stretch logo slightly */
+    height: auto;
 }
 
 header nav ul {
@@ -38,7 +39,7 @@ header nav a {
 }
 
 header nav a:hover {
-    background-color: #FFCC00; /* Slightly darker yellow on hover */
+    background-color: #FF9F00; /* Slightly darker yellow on hover */
 }
 
 .container {
@@ -85,7 +86,7 @@ form {
 }
 
 .validate-button {
-    background-color: #FFDD55; /* Softer yellow for button */
+    background-color: #FFB900; /* Brighter yellow for button */
     color: white;
     padding: 15px 30px;
     border: none;
