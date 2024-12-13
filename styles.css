@@ -9,7 +9,7 @@ body {
 header {
     background-color: #ffcc00; /* Yellow */
     color: white;
-    padding: 10px 20px; /* Reduced padding for smaller header */
+    padding: 15px 20px; /* Adjusted padding for more space */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,19 +25,21 @@ header nav ul {
     padding: 0;
     display: flex;
     flex-wrap: wrap; /* Allow the items to wrap on smaller screens */
-    justify-content: center; /* Center the items */
+    justify-content: space-evenly; /* Evenly distribute the items */
+    width: 100%; /* Ensure nav items take full width of the container */
 }
 
 header nav li {
-    margin-right: 20px;
+    margin: 0 15px; /* Space out the items with consistent margin */
 }
 
 header nav a {
     color: white;
     text-decoration: none;
-    padding: 10px;
+    padding: 12px 20px; /* Adjust padding for readability */
     border-radius: 5px;
-    font-size: 14px; /* Smaller font size for better fit */
+    font-size: 16px; /* Slightly larger font size for better visibility */
+    text-align: center;
 }
 
 header nav a:hover {
@@ -69,7 +71,7 @@ form {
 @media (max-width: 768px) {
     header {
         flex-direction: column; /* Stack logo and navigation vertically */
-        padding: 10px;
+        padding: 15px;
     }
 
     header img {
@@ -79,24 +81,24 @@ form {
     header nav ul {
         display: flex;
         flex-direction: row; /* Ensure the nav items stay in a row */
-        justify-content: center;
+        justify-content: space-evenly; /* Evenly space the items across the screen */
         width: 100%;
-        padding: 0;
     }
 
     header nav li {
-        margin-right: 10px;
+        margin: 0 10px; /* Space out the items with smaller margins */
     }
 
     header nav a {
-        font-size: 12px; /* Even smaller font size on mobile */
-        padding: 8px 12px; /* Reduce padding for smaller screen */
+        font-size: 14px; /* Increase font size slightly for better readability */
+        padding: 10px 15px; /* Adjust padding for balance */
     }
 }
 
 /* For smaller devices (like phones), keep it in a smaller layout */
 @media (max-width: 480px) {
     header nav a {
-        font-size: 10px; /* Even smaller font size for very small screens */
+        font-size: 12px; /* Slightly smaller font size for very small screens */
+        padding: 8px 12px; /* Further reduce padding */
     }
 }
