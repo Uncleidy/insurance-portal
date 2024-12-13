@@ -9,11 +9,8 @@ body {
 header {
     background-color: #FFB900; /* Brighter yellow */
     color: white;
-    padding: 5px 10px; /* Adjust padding for a smaller header */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Allow navigation items to wrap */
+    padding: 20px 10px; /* Adjust padding for a smaller header */
+    text-align: center;
 }
 
 header img {
@@ -21,15 +18,19 @@ header img {
     height: auto;
 }
 
+header nav {
+    background-color: #FFB900; /* Yellow background for navigation */
+    padding: 5px 10px;
+}
+
 header nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: nowrap; /* Keep items in a single row on larger screens */
-    gap: 8px; /* Reduced space between items */
-    overflow-x: auto; /* Allow horizontal scrolling on mobile if needed */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center navigation items */
+    gap: 5px; /* Adjust space between items */
 }
 
 header nav li {
@@ -39,10 +40,11 @@ header nav li {
 header nav a {
     color: white;
     text-decoration: none;
-    padding: 8px 12px; /* Reduced padding */
+    padding: 8px 12px; /* Reduced padding for better fit */
     border-radius: 5px;
     display: block;
     white-space: nowrap; /* Prevent text wrapping */
+    font-size: 14px; /* Smaller font size to fit on smaller screens */
 }
 
 header nav a:hover {
@@ -113,28 +115,26 @@ form {
 
 /* Media Queries for Mobile Responsiveness */
 @media (max-width: 768px) {
-    header nav ul {
-        justify-content: flex-start; /* Align nav items to the left */
-        flex-wrap: nowrap; /* Keep items in one row */
-        width: 100%; /* Full width for navigation */
+    header {
+        padding: 10px 5px; /* Adjusted padding for a more compact header */
     }
 
-    header nav li {
-        flex: 0 0 auto; /* Prevent items from shrinking */
-        width: auto; /* Auto width for better responsiveness */
+    header img {
+        width: 100px; /* Adjust logo size */
+    }
+
+    header nav ul {
+        justify-content: center;
+        flex-wrap: wrap; /* Wrap the navigation items on small screens */
     }
 
     header nav a {
-        padding: 8px 10px; /* Adjust padding for mobile screens */
+        font-size: 12px; /* Smaller font size for mobile */
+        padding: 6px 8px; /* Adjust padding for mobile screens */
     }
 
-    header {
-        padding: 5px 10px; /* Adjust header padding */
-    }
-
-    /* Allow horizontal scrolling */
-    header nav ul {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+    header nav li {
+        flex: 1 0 100%; /* Each item takes full width on smaller screens */
+        text-align: center; /* Center navigation links */
     }
 }
