@@ -7,9 +7,9 @@ body {
 }
 
 header {
-    background-color: #FFD700; /* Changed to Yellow */
+    background-color: #FFDD55; /* Softer yellow */
     color: white;
-    padding: 10px 20px; /* Reduced padding for smaller header */
+    padding: 5px 20px; /* Reduced the height of the yellow header */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,7 +38,7 @@ header nav a {
 }
 
 header nav a:hover {
-    background-color: #FFCC00; /* Lighter Yellow on hover */
+    background-color: #FFCC00; /* Slightly darker yellow on hover */
 }
 
 .container {
@@ -85,7 +85,7 @@ form {
 }
 
 .validate-button {
-    background-color: #FFD700; /* Changed to Yellow */
+    background-color: #FFDD55; /* Softer yellow for button */
     color: white;
     padding: 15px 30px;
     border: none;
