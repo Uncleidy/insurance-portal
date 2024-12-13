@@ -16,6 +16,8 @@ header {
 header img {
     width: 120px; /* Adjusted to stretch logo slightly */
     height: auto;
+    display: block;
+    margin: 0 auto; /* Center the logo */
 }
 
 header nav {
