@@ -90,7 +90,7 @@ form {
     }
 
     header nav a {
-        font-size: 20px; /* Increased font size for better visibility */
+        font-size: 18px; /* Decreased font size for a bit more balance */
         padding: 10px 15px; /* Adjust padding for balance */
     }
 }
@@ -98,7 +98,7 @@ form {
 /* For smaller devices (like phones), keep it in a smaller layout */
 @media (max-width: 480px) {
     header nav a {
-        font-size: 24px; /* Further increased font size for better readability on iPhone */
+        font-size: 20px; /* Slightly decreased font size for better readability */
         padding: 12px 20px; /* Adjust padding to maintain balance */
     }
 }
