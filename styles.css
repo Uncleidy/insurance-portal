@@ -9,11 +9,11 @@ body {
 header {
     background-color: #FFB900; /* Brighter yellow */
     color: white;
-    padding: 3px 20px; /* Reduced padding for even smaller header */
+    padding: 5px 10px; /* Adjust padding for a smaller header */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Allow navigation items to wrap on small screens */
+    flex-wrap: wrap; /* Allow navigation items to wrap */
 }
 
 header img {
@@ -26,21 +26,23 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Allow navigation items to wrap on small screens */
-    gap: 10px; /* Space between items */
+    flex-wrap: nowrap; /* Keep items in a single row on larger screens */
+    gap: 8px; /* Reduced space between items */
+    overflow-x: auto; /* Allow horizontal scrolling on mobile if needed */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 header nav li {
-    flex: 1 1 auto; /* Allow items to shrink and grow */
-    text-align: center;
+    flex: 0 0 auto; /* Prevent items from growing or shrinking */
 }
 
 header nav a {
     color: white;
     text-decoration: none;
-    padding: 10px;
+    padding: 8px 12px; /* Reduced padding */
     border-radius: 5px;
     display: block;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 header nav a:hover {
@@ -112,22 +114,27 @@ form {
 /* Media Queries for Mobile Responsiveness */
 @media (max-width: 768px) {
     header nav ul {
-        justify-content: space-evenly; /* Evenly space the nav items */
-        flex-direction: column; /* Stack the items vertically */
-        width: 100%; /* Full width for the navigation */
+        justify-content: flex-start; /* Align nav items to the left */
+        flex-wrap: nowrap; /* Keep items in one row */
+        width: 100%; /* Full width for navigation */
     }
 
     header nav li {
-        flex: none; /* Prevent items from shrinking */
-        width: 100%; /* Make items take full width */
+        flex: 0 0 auto; /* Prevent items from shrinking */
+        width: auto; /* Auto width for better responsiveness */
     }
 
     header nav a {
-        padding: 12px 0; /* Adjust padding for better touch experience */
-        text-align: center;
+        padding: 8px 10px; /* Adjust padding for mobile screens */
     }
 
     header {
-        padding: 5px 10px; /* Adjust header padding for smaller screen */
+        padding: 5px 10px; /* Adjust header padding */
+    }
+
+    /* Allow horizontal scrolling */
+    header nav ul {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
